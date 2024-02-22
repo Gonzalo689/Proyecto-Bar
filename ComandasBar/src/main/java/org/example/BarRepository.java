@@ -25,6 +25,20 @@ public class BarRepository {
            e.printStackTrace();
         }
     }
+    public Connection crearConexionJasper()  {
+        String db = "comandas_bar";
+        String host = "localhost";
+        String port = "3306";
+        String urlConnection = "jdbc:mysql://"+host+":"+port+"/"+db;
+        String user = "root";
+        String pwd = "infobbdd";
+        try{
+            return DriverManager.getConnection(urlConnection, user, pwd);
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public void cerrarConexion(){
         try {

@@ -1,16 +1,20 @@
 package org.example;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
+
 
 public class ProductosController {
 
@@ -25,11 +29,17 @@ public class ProductosController {
     @FXML
     private ImageView imageViewCola;
     @FXML
-    private ImageView bocataCalamares;
+    private ImageView bocataLomo;
     @FXML
-    private ImageView plato_jamon;
+    private ImageView bocarajamon;
     @FXML
-    private ImageView paella;
+    private ImageView bocataTorilla;
+    @FXML
+    private ImageView tartaChocolate;
+    @FXML
+    private ImageView cafe;
+    @FXML
+    private ImageView tartaQueso;
     private int mesa_comanda_id;
     private int mesa_id;
 
@@ -44,23 +54,19 @@ public class ProductosController {
 
     }
     private void listener() {
-        imageViewAgua.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                listenerProducts(1);
-            }
-        });
         imageViewAgua.setOnMouseClicked(event -> listenerProducts(1));
         imageViewFanta.setOnMouseClicked(event -> listenerProducts(2));
         imageViewCola.setOnMouseClicked(event -> listenerProducts(3));
-        bocataCalamares.setOnMouseClicked(event -> listenerProducts(4));
-        plato_jamon.setOnMouseClicked(event -> listenerProducts(5));
-        paella.setOnMouseClicked(event -> listenerProducts(6));
+        bocataLomo.setOnMouseClicked(event -> listenerProducts(4));
+        bocarajamon.setOnMouseClicked(event -> listenerProducts(5));
+        bocataTorilla.setOnMouseClicked(event -> listenerProducts(6));
+        tartaChocolate.setOnMouseClicked(mouseEvent -> listenerProducts(9));
+        tartaQueso.setOnMouseClicked(mouseEvent -> listenerProducts(8));
+        cafe.setOnMouseClicked(mouseEvent -> listenerProducts(7));
     }
     public void listenerProducts (int i){
         Producto producto = App.br.recibirProducto(i);
         addList(producto);
-        //App.br.aniadirCant(mesa_comanda_id,1);
         App.br.insertarComanda(mesa_comanda_id,producto.getId(),producto.precioTotal());
     }
 
@@ -91,7 +97,6 @@ public class ProductosController {
         double precioTotal = 0 ;
         for (Producto producto: listaProductos) {
                 precioTotal += producto.precioTotal();
-                //App.br.insertarComanda(mesa_comanda_id,producto.getId(),producto.getCant(),producto.precioTotal());
         }
         App.br.actualizarMesaComanda(mesa_id, precioTotal);
         lista.clear();
@@ -99,6 +104,26 @@ public class ProductosController {
         listaProductos.clear();
         reiniciarLista();
         App.setRoot("mesas");
+    }
+    @FXML
+    private void crearJasper(){
+        double precioTotal = 0 ;
+        for (Producto producto: listaProductos) {
+            precioTotal += producto.precioTotal();
+        }
+        Map<String, Object> parametros = new HashMap<>();
+
+        parametros.put("mesa_id", mesa_id);
+        parametros.put("total_Mesa", precioTotal + " €");
+        InputStream reportFile = getClass().getResourceAsStream("BarJasper.jrxml");
+        try {
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportFile);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, App.br.crearConexionJasper());
+            JasperViewer.viewReport(jasperPrint, false);
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
     }
 
 

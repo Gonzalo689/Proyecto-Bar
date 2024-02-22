@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BarJasper" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="e9bb1a27-f975-4aa4-98f9-75524c5daafa">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.jrdax"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#FFFFFF" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="mesa_id" class="java.lang.String"/>
+	<parameter name="total_Mesa" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+    p.nombre AS nombre_producto,
+    p.precio AS precio_producto,
+    SUM(c.cant) AS cantidad,
+    SUM(c.cant * p.precio) AS precio_total_producto
+    FROM mesas_comandas mc
+    INNER JOIN mesas m ON mc.mesa_id = m.id
+    INNER JOIN comandas c ON mc.id = c.mesa_comanda_id
+    INNER JOIN productos p ON c.producto_id = p.id
+    WHERE m.id = $P{mesa_id} AND mc.fecha_final IS NULL
+    GROUP BY p.id]]>
+	</queryString>
+	<field name="nombre_producto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre_producto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="precio_producto" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="precio"/>
+		<property name="com.jaspersoft.studio.field.label" value="precio_producto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="cantidad" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="cantidad"/>
+		<property name="com.jaspersoft.studio.field.label" value="cantidad"/>
+	</field>
+	<field name="precio_total_producto" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="precio_total_producto"/>
+		<property name="com.jaspersoft.studio.field.label" value="precio_total_producto"/>
+	</field>
+	<background>
+		<band height="822" splitType="Stretch">
+
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="722" width="105" height="100" forecolor="#666666" backcolor="#666666" uuid="58048a65-569d-454e-b6dd-f3bb46c94ee3"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+			</frame>
+		</band>
+	</background>
+	<title>
+		<band height="152" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="555" height="115" uuid="524767a9-e7e5-4041-9b08-5a7210b38e22"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="54" isBold="false"/>
+				</textElement>
+				<text><![CDATA[WAVES TITLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="234" y="115" width="321" height="37" uuid="bd605e96-6228-492c-9dd6-f33258081a5a"/>
+				<textElement textAlignment="Right">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Waves SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="97" y="5" width="458" height="20" backcolor="#666666" uuid="eb0fefed-b830-492b-a0c9-ec23411537a7"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="120" height="15" uuid="9c0416c3-7ca3-496c-85f5-efca2d22f168">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="556fdf42-ce4f-4bff-bb20-dfc07565e6c6"/>
+					</reportElement>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="130" y="0" width="98" height="15" uuid="f87a5b9a-9195-469b-bc92-fd4296d697df">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3e958c8b-ba9a-43b0-b82e-af110eae784d"/>
+					</reportElement>
+					<text><![CDATA[Precio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="240" y="0" width="102" height="15" uuid="15a0687d-a199-4744-b8b7-4a7437aa6e96">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="885b84b8-cda7-4c5b-8720-6bfbb7e86702"/>
+					</reportElement>
+					<text><![CDATA[Cantidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="342" y="0" width="114" height="15" uuid="053292cd-4156-4733-8457-ee34dfe704b8">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bf7a14a5-2e88-4267-8c94-fffc02ba62b0"/>
+					</reportElement>
+					<text><![CDATA[Precio Producto]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<frame>
+				<reportElement x="97" y="1" width="458" height="15" uuid="5d75be3e-ea39-4b96-baf8-b49497315044"/>
+				<textField>
+					<reportElement style="Detail" x="0" y="0" width="130" height="15" uuid="955663bd-f39f-4d1c-9518-4707e3d50cea">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="556fdf42-ce4f-4bff-bb20-dfc07565e6c6"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{nombre_producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="130" y="0" width="98" height="15" uuid="6baa01d0-2695-4e2d-a395-ff49599790ad">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3e958c8b-ba9a-43b0-b82e-af110eae784d"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{precio_producto}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="240" y="0" width="102" height="15" uuid="b512afdc-b525-464d-9b44-15f3479fc70d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="885b84b8-cda7-4c5b-8720-6bfbb7e86702"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="342" y="0" width="114" height="15" uuid="bef19f6a-e3af-4d6b-8715-320a2dacd33c">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bf7a14a5-2e88-4267-8c94-fffc02ba62b0"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{precio_total_producto}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="458" height="1" uuid="2b97af27-2a1e-491f-a0f4-b2549a3510ee"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="112" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="422" y="20" width="131" height="20" forecolor="#000000" uuid="f8570c2f-4404-4725-885a-4eb3c26abb4a"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="90" y="20" width="267" height="20" forecolor="#000000" uuid="fce324aa-31f5-453a-a957-28bc6f740c75"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Waves Title Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="471" y="-1" width="84" height="20" uuid="1b918781-c847-4a98-a938-d5ed73f38935"/>
+				<textFieldExpression><![CDATA[$P{total_Mesa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="90" y="0" width="267" height="20" forecolor="#000000" uuid="f771177a-9ed5-4cf3-bb6b-803954b9258a"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Precio total de la mesa]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

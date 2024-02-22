@@ -79,9 +79,13 @@ public class App extends Application {
         br.insertarProducto(1,"Agua", 1.0);
         br.insertarProducto(2,"Fanta", 1.8);
         br.insertarProducto(3,"Coca-Cola", 1.8);
-        br.insertarProducto(4,"Bocadilo de calamares", 8.5);
-        br.insertarProducto(5,"Plato de jamon", 6.2);
-        br.insertarProducto(6,"Paella", 9.8);
+        br.insertarProducto(4,"Bocadilo de Lomo", 8.5);
+        br.insertarProducto(5,"Bocadilo de jamon", 6.2);
+        br.insertarProducto(6,"Bocadillo de tortilla", 9.8);
+
+        br.insertarProducto(7, "Café", 1.2);
+        br.insertarProducto(8,"Tarta de Queso", 3.5);
+        br.insertarProducto(9,"Tarta de Chocolate", 3.5);
 
     }
 
