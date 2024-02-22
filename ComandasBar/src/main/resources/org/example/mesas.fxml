@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.MesasController">
+   <center>
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="50.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <children>
+                  <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Mesa 1">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="primaryButton1" onAction="#switchToSecondary" text="Mesa 2">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="primaryButton11" layoutX="119.0" layoutY="10.0" onAction="#switchToSecondary" text="Mesa 3">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="primaryButton111" layoutX="268.0" layoutY="10.0" onAction="#switchToSecondary" text="Mesa 4">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="30.0" layoutY="30.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <children>
+                  <Button fx:id="primaryButton2" onAction="#switchToSecondary" text="Mesa 5">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="primaryButton12" onAction="#switchToSecondary" text="Mesa 6">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="primaryButton121" layoutX="149.0" layoutY="10.0" onAction="#switchToSecondary" text="Mesa 7">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="primaryButton1211" layoutX="328.0" layoutY="10.0" onAction="#switchToSecondary" text="Mesa 8">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="30.0" layoutY="30.0" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <children>
+                  <Button fx:id="primaryButton21" onAction="#switchToSecondary" text="Mesa 9">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="primaryButton221" onAction="#switchToSecondary" text="Mesa 10">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="primaryButton1212" layoutX="149.0" layoutY="10.0" onAction="#switchToSecondary" text="Mesa 11">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="primaryButton1222" layoutX="328.0" layoutY="10.0" onAction="#switchToSecondary" text="Mesa 12">
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" />
+         </padding>
+      </VBox>
+   </center>
+   <top>
+      <Label prefHeight="0.0" prefWidth="148.0" text="Bar Manolo" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <bottom>
+      <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="152.0" text="Estadisticas" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="200.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+</BorderPane>
