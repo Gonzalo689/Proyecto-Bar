@@ -9,6 +9,7 @@
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<parameter name="mesa_id" class="java.lang.String"/>
 	<parameter name="total_Mesa" class="java.lang.String"/>
+	<parameter name="nombre_Mesa" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
     p.nombre AS nombre_producto,
@@ -42,9 +43,8 @@
 	</field>
 	<background>
 		<band height="822" splitType="Stretch">
-
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="722" width="105" height="100" forecolor="#666666" backcolor="#666666" uuid="58048a65-569d-454e-b6dd-f3bb46c94ee3"/>
+				<reportElement mode="Opaque" x="-20" y="-311" width="105" height="1133" forecolor="#666666" backcolor="#666666" uuid="58048a65-569d-454e-b6dd-f3bb46c94ee3"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -56,21 +56,18 @@
 		</band>
 	</background>
 	<title>
-		<band height="152" splitType="Stretch">
+		<band height="154" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="0" y="0" width="555" height="115" uuid="524767a9-e7e5-4041-9b08-5a7210b38e22"/>
+				<reportElement style="Title" x="85" y="0" width="470" height="115" uuid="524767a9-e7e5-4041-9b08-5a7210b38e22"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="54" isBold="false"/>
 				</textElement>
-				<text><![CDATA[WAVES TITLE]]></text>
+				<text><![CDATA[Proyecto Bar]]></text>
 			</staticText>
-			<staticText>
-				<reportElement style="SubTitle" x="234" y="115" width="321" height="37" uuid="bd605e96-6228-492c-9dd6-f33258081a5a"/>
-				<textElement textAlignment="Right">
-					<font size="26"/>
-				</textElement>
-				<text><![CDATA[Waves SubTitle]]></text>
-			</staticText>
+			<textField>
+				<reportElement style="SubTitle" isPrintRepeatedValues="false" x="357" y="124" width="203" height="30" uuid="860d7244-a74c-4988-a241-25cdf902bce1"/>
+				<textFieldExpression><![CDATA[$P{nombre_Mesa}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
