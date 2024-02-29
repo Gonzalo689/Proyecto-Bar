@@ -19,7 +19,7 @@ public class MesasController {
     @FXML
     private void switchToSecondary(ActionEvent event) throws IOException {
         String textoBoton = ((Button) event.getSource()).getText();
-        int id = Integer.parseInt(textoBoton.trim().split(" ")[1]);
+        int id = Integer.parseInt(((Button) event.getSource()).getId());
         for (Mesa mesa: mesas) {
             if (mesa.getId() == id) {
                 App.mesaAct = mesa;

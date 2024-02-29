@@ -3,71 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ProductosController">
-   <center>
-      <GridPane alignment="CENTER" prefHeight="423.0" prefWidth="451.0" BorderPane.alignment="CENTER">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="135.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="133.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="133.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="152.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="234.0" minHeight="10.0" prefHeight="154.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="154.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="114.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <ImageView fx:id="imageViewFanta" fitHeight="150.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-               <image>
-                  <Image url="@../../img/FANTA.bmp" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageViewAgua" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
-               <image>
-                  <Image url="@../../img/AGUA.bmp" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="bocataTorilla" fitHeight="112.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../img/Bocata_Tortilla.bmp" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="bocataLomo" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../img/Bocadillo_Lomo.bmp" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="bocarajamon" fitHeight="133.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <image>
-                  <Image url="@../../img/Bocadillo_Jamon.bmp" />
-               </image>
-            </ImageView>
-              <Button onAction="#switchToPrimary" text="Switch to Primary View" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ImageView fx:id="imageViewCola" fitHeight="150.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/COCA_COLA.bmp" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="cafe" fitHeight="150.0" fitWidth="134.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../img/CAFÉ.bmp" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="tartaChocolate" fitHeight="150.0" fitWidth="134.0" layoutX="11.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../img/Tarta_Chocolate.bmp" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="tartaQueso" fitHeight="150.0" fitWidth="134.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <image>
-                  <Image url="@../../img/TARTA_QUESO.bmp" />
-               </image>
-            </ImageView>
-         </children>
-      </GridPane>
-   </center>
    <right>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -81,4 +19,76 @@
          </children>
       </VBox>
    </right>
+   <center>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Projecto Bar">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <GridPane alignment="CENTER" prefHeight="423.0" prefWidth="451.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="221.0" minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="234.0" minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="221.0" minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="121.0" minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fx:id="imageViewFanta" fitHeight="150.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../../img/FANTA.bmp" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageViewAgua" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                     <image>
+                        <Image url="@../../img/AGUA.bmp" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bocataTorilla" fitHeight="112.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../img/Bocata_Tortilla.bmp" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bocataLomo" fitHeight="150.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../img/Bocadillo_Lomo.bmp" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bocarajamon" fitHeight="133.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../img/Bocadillo_Jamon.bmp" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageViewCola" fitHeight="150.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/COCA_COLA.bmp" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cafe" fitHeight="150.0" fitWidth="134.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../img/CAFÉ.bmp" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="tartaChocolate" fitHeight="150.0" fitWidth="134.0" layoutX="11.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../img/Tarta_Chocolate.bmp" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="tartaQueso" fitHeight="150.0" fitWidth="134.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../img/TARTA_QUESO.bmp" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+              <Button onAction="#switchToPrimary" text="Volver a las mesas" />
+         </children>
+      </VBox>
+   </center>
 </BorderPane>

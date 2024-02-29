@@ -112,11 +112,10 @@ public class ProductosController {
             precioTotal += producto.precioTotal();
         }
         Map<String, Object> parametros = new HashMap<>();
-        App.mesaAct.getNombre();
 
         parametros.put("mesa_id", mesa_id);
         parametros.put("total_Mesa", precioTotal + " €");
-        parametros.put("nombre_Mesa", "Informe de la mesa " +  App.mesaAct.getNombre());
+        parametros.put("nombre_Mesa", "Informe de la mesa " +  App.mesaAct.getId());
         InputStream reportFile = getClass().getResourceAsStream("BarJasper.jrxml");
         try {
             JasperReport jasperReport = JasperCompileManager.compileReport(reportFile);
@@ -127,7 +126,6 @@ public class ProductosController {
             e.printStackTrace();
         }
     }
-
 
     @FXML
     private void switchToPrimary() throws IOException {

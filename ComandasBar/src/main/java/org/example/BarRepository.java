@@ -308,18 +308,4 @@ public class BarRepository {
         }
     }
 
-
-//    SELECT m.nombre AS nombre_mesa,
-//    p.nombre AS nombre_producto,
-//    p.precio AS precio_producto,
-//    SUM(c.cant) AS cantidad,
-//    SUM(c.cant * p.precio) AS precio_total_producto,
-//    mc.precioTotal,
-//    mc.fecha_final
-//    FROM mesas_comandas mc
-//    INNER JOIN mesas m ON mc.mesa_id = m.id
-//    INNER JOIN comandas c ON mc.id = c.mesa_comanda_id
-//    INNER JOIN productos p ON c.producto_id = p.id
-//    WHERE m.id = $P{mesa_id} AND mc.fecha_final IS NULL
-//    GROUP BY mc.fecha_final, p.nombre
 }
