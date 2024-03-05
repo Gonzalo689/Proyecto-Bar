@@ -1,3 +1,14 @@
+Versión 0.7.0 (2024-05-02)
+Funcionamiento
+  + Se puede ver cual mesa esta ocupada
+  + Se eliminaran los datos inecesarios
+Mejoras
+  + Base de datos mejorada
+
+Versión 0.6.1 (2024-29-02)
+Mejoras
+  + Mejora parametros Jasper Report
+
 Versión 0.6.0 (2024-05-02)
 Funcionalidad
   + Agregación de Jasper Report
