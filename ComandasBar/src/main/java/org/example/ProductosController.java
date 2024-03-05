@@ -2,6 +2,7 @@ package org.example;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +12,9 @@ import javafx.collections.ObservableList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
@@ -19,7 +23,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class ProductosController {
 
     @FXML
-    private ListView listView;
+    private TableView<Producto> tableView;
     private ObservableList<Producto> listaProductos = FXCollections.observableArrayList();
     private ArrayList<Producto> lista;
     @FXML
@@ -49,10 +53,24 @@ public class ProductosController {
         lista = App.productos;
         mesa_id= App.mesaAct.getId();
         mesa_comanda_id = App.br.id_mesa_comanda(mesa_id);
+        columns();
         reiniciarLista();
         listener();
 
     }
+    public void columns(){
+        TableColumn<Producto, String> colNombre = new TableColumn<>("Nombre");
+        TableColumn<Producto, Double> colPrecio = new TableColumn<>("Precio");
+        TableColumn<Producto, Integer> colStock = new TableColumn<>("Cant");
+
+        tableView.getColumns().addAll(colNombre, colPrecio, colStock);
+        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
+        colStock.setCellValueFactory(new PropertyValueFactory<>("cant"));
+    }
+
+
+
     private void listener() {
         imageViewAgua.setOnMouseClicked(event -> listenerProducts(1));
         imageViewFanta.setOnMouseClicked(event -> listenerProducts(2));
@@ -88,7 +106,7 @@ public class ProductosController {
     private void reiniciarLista(){
         listaProductos.clear();
         listaProductos.addAll(lista);
-        listView.setItems(listaProductos);
+        tableView.setItems(listaProductos);
     }
 
     @FXML
@@ -100,6 +118,7 @@ public class ProductosController {
         }
         App.br.actualizarMesaComanda(mesa_id, precioTotal);
         lista.clear();
+        App.mesaAct.setOcupada(false);
         App.mesaAct.clearProducts();
         listaProductos.clear();
         reiniciarLista();

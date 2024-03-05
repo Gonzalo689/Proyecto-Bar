@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class App extends Application {
 
-    private static Scene scene;
+    public static Scene scene;
     public static ArrayList<Producto> productos;
     public static ArrayList<Mesa> mesas;
     public static Mesa mesaAct;
@@ -27,9 +27,11 @@ public class App extends Application {
         inicioBBDD();
 
         scene = new Scene(loadFXML("mesas"));
+
         stage.setMaximized(true);
         stage.setScene(scene);
         stage.show();
+        System.out.println(scene);
     }
     public void inicioBBDD(){
         br = new BarRepository();
@@ -43,13 +45,13 @@ public class App extends Application {
     }
     @Override
     public void stop() throws Exception {
-        br.borrarMesaComandaSinFinal();
+        br.borrarMesaComandaSinDatos();
         br.cerrarConexion();
         System.out.println("cierre");
         super.stop();
     }
 
-        static void setRoot(String fxml) throws IOException {
+    static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 

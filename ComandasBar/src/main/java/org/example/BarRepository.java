@@ -76,7 +76,7 @@ public class BarRepository {
                     "cant INT," +
                     "precio Double," +
                     "PRIMARY KEY (mesa_comanda_id, producto_id)," +
-                    "FOREIGN KEY (mesa_comanda_id) REFERENCES mesas_comandas(id)," +
+                    "FOREIGN KEY (mesa_comanda_id) REFERENCES mesas_comandas(id) ON DELETE CASCADE ," +
                     "FOREIGN KEY (producto_id) REFERENCES productos(id))");
             s.execute();
             c.commit();
@@ -209,10 +209,10 @@ public class BarRepository {
         s.setInt(1, mesaId);
         return s.executeQuery().next();
     }
-    public void borrarMesaComandaSinFinal(){
+    public void borrarMesaComandaSinDatos(){
         try {
             c.setAutoCommit(false);
-            String sql = "DELETE FROM mesas_comandas WHERE fecha_final IS NULL";
+            String sql = "DELETE FROM mesas_comandas WHERE fecha_final IS NULL OR precioTotal = 0";
             s = c.prepareStatement(sql);
             s.executeUpdate();
             c.commit();
