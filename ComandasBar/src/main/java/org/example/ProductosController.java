@@ -119,8 +119,6 @@ public class ProductosController {
         App.br.actualizarMesaComanda(mesa_id, precioTotal);
         lista.clear();
         App.mesaAct.setOcupada(false);
-        App.mesaAct.clearProducts();
-        listaProductos.clear();
         reiniciarLista();
         App.setRoot("mesas");
     }
@@ -145,14 +143,27 @@ public class ProductosController {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void cancelar() throws IOException {
+        App.br.borrarMesaComandaMesa(App.mesaAct.getId());
+        lista.clear();
+        App.mesaAct.setOcupada(false);
+        reiniciarLista();
+        App.setRoot("mesas");
+    }
 
     @FXML
     private void switchToPrimary() throws IOException {
-        App.mesaAct.clearProducts();
+        //App.mesaAct.clearProducts();
         for (Producto prod: lista) {
             App.mesaAct.aniadirProducto(prod);
         }
+        if (lista.isEmpty()){
+            App.mesaAct.setOcupada(false);
+        }
         lista.clear();
+
+
         App.setRoot("mesas");
     }
 

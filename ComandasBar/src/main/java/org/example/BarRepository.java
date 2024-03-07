@@ -2,6 +2,9 @@ package org.example;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class BarRepository {
@@ -225,6 +228,23 @@ public class BarRepository {
             e.printStackTrace();
         }
     }
+    public void borrarMesaComandaMesa(int mesa_id){
+        try {
+            c.setAutoCommit(false);
+            String sql = "DELETE FROM mesas_comandas WHERE mesa_id = ? and fecha_final IS NULL ";
+            s = c.prepareStatement(sql);
+            s.setInt(1, mesa_id);
+            s.executeUpdate();
+            c.commit();
+        }catch (Exception e){
+            try {
+                c.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        }
+    }
     public void actualizarMesaComanda(int mesa_id, double preciototal) {
         try {
             c.setAutoCommit(false);
@@ -307,5 +327,31 @@ public class BarRepository {
             e.printStackTrace();
         }
     }
+    public HashMap<String, HashMap<Integer, Double>> obtenerHashMapMesasComandas() {
+        HashMap<String, HashMap<Integer, Double>> hashMapMesasComandas = new HashMap<>();
+        try {
+            Statement statement = c.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT mesas.nombre, mesas_comandas.id, mesas_comandas.precioTotal " +
+                    "FROM mesas " +
+                    "JOIN mesas_comandas ON mesas.id = mesas_comandas.mesa_id");
+
+            while (resultSet.next()) {
+                String nombreMesa = resultSet.getString("nombre");
+                int idMesasComandas = resultSet.getInt("id");
+                double precioTotal = resultSet.getDouble("precioTotal");
+
+                if (!hashMapMesasComandas.containsKey(nombreMesa)) {
+                    hashMapMesasComandas.put(nombreMesa, new HashMap<>());
+                }
+                // Insertar el ID de la mesa comanda junto con su precio total
+                hashMapMesasComandas.get(nombreMesa).put(idMesasComandas, precioTotal);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return hashMapMesasComandas;
+    }
+
+
 
 }

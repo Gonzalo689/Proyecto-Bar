@@ -98,7 +98,7 @@
       </Label>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="152.0" text="Estadisticas" BorderPane.alignment="CENTER">
+      <Button mnemonicParsing="false" onAction="#createHistorico" prefHeight="49.0" prefWidth="152.0" text="Historico" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="200.0" />
          </BorderPane.margin>
