@@ -1,3 +1,8 @@
+Versión 0.8.0 (2024-07-03)
+Funcionamiento
+  + Nuevo boton para cancelar el pedido 
+  + Nuevo botón para crear un jasper report para el historial las mesas
+
 Versión 0.7.0 (2024-05-02)
 Funcionamiento
   + Se puede ver cual mesa esta ocupada
