@@ -1,3 +1,9 @@
+Versión 0.9.1 (2025-09-09)
+Funcionamiento
+ + Nuevo agregación de botones en la tableView para agregar y eliminar productos
+Mejora
+ + Mejora de la query para las estadisticas de los productos
+
 Versión 0.9.0 (2024-09-03)
 Funcionamiento
   + Nuevo vista para poder ver estadisticas de los producto mas comsumidos y mas mesas mas usadas
