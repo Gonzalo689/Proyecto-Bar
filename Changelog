@@ -1,3 +1,9 @@
+Versión 0.9.0 (2024-09-03)
+Funcionamiento
+  + Nuevo vista para poder ver estadisticas de los producto mas comsumidos y mas mesas mas usadas
+Mejora
+  + Mejora en los Jasper, Ahora saldra la fecha inicial de la mesa con comandas
+
 Versión 0.8.0 (2024-07-03)
 Funcionamiento
   + Nuevo boton para cancelar el pedido 
