@@ -2,13 +2,20 @@ package org.example;
 
 import java.util.ArrayList;
 
-
+/**
+ * Clase para poder acceder a las mesas mas facilmente
+ */
 public class Mesa {
     private int id;
     private String nombre;
     private ArrayList<Producto> productos;
     private boolean ocupada;
 
+    /**
+     * Constuctor de la case mesa y por defecto no estara ocupada
+     * @param id id de la mesa
+     * @param nombre nombre de la mesa
+     */
     public Mesa(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;

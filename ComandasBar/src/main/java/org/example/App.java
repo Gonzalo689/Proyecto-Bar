@@ -20,6 +20,12 @@ public class App extends Application {
     public static ArrayList<Mesa> mesas;
     public static Mesa mesaAct;
     public static BarRepository br ;
+
+    /**
+     * Metodo que inicia el JavaFX
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         productos = new ArrayList<>();
@@ -33,6 +39,10 @@ public class App extends Application {
         stage.show();
         System.out.println(scene);
     }
+
+    /**
+     * Método que inicia la base de daton con las tablas productos y mesas
+     */
     public void inicioBBDD(){
         br = new BarRepository();
         br.crearConexion();
@@ -43,6 +53,12 @@ public class App extends Application {
 
         mesas = br.recibirListaMesa();
     }
+
+    /**
+     * Método de la clase padre el cual cuando se cierre tambien cerrara la conexión a la base de datos y
+     * borrará las mesasComandas que no tengan datos
+     * @throws Exception
+     */
     @Override
     public void stop() throws Exception {
         br.borrarMesaComandaSinDatos();
@@ -51,6 +67,11 @@ public class App extends Application {
         super.stop();
     }
 
+    /**
+     * Método estatico para cambiar de visto
+     * @param fxml vista a la que quieres ir
+     * @throws IOException excepción por si no encuentra la vista
+     */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
@@ -63,6 +84,9 @@ public class App extends Application {
         launch();
     }
 
+    /**
+     * Método que inicia las mesas solo si no existen
+     */
     private void iniciarMesas(){
         br.insertarMesas(1,"Mesa 1");
         br.insertarMesas(2,"Mesa 2");
@@ -77,6 +101,9 @@ public class App extends Application {
         br.insertarMesas(11,"Mesa 11");
         br.insertarMesas(12,"Mesa 12");
     }
+    /**
+     * Método que inicia los productos solo si no existen
+     */
     private void inicarProductos(){
         br.insertarProducto(1,"Agua", 1.0);
         br.insertarProducto(2,"Fanta", 1.8);

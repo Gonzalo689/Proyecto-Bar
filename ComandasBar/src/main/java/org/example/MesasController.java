@@ -1,17 +1,19 @@
 package org.example;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.*;
 
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.util.Duration;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
+
+/**
+ * Clase que controla la vista de las mesas
+ */
 
 public class MesasController {
 
@@ -19,12 +21,18 @@ public class MesasController {
     @FXML
     public void initialize() {
         mesas = App.mesas;
-
+        // Clase para que tarde un poco en llamarse le metodo color para que la escena se pueda cargar correctamente
         PauseTransition pause = new PauseTransition(Duration.seconds(0.3));
         pause.setOnFinished(event -> changeColor());
         pause.play();
     }
 
+    /**
+     * Método que sirve para elegir una mesa el cual cogera el id del la mesa en la que entra para iniciar una mesa con
+     * comandas
+     * @param event accion para cuando se le clica a alguna mesa
+     * @throws IOException
+     */
     @FXML
     private void switchToSecondary(ActionEvent event) throws IOException {
         int id = Integer.parseInt(((Button)event.getSource()).getId());
@@ -40,6 +48,11 @@ public class MesasController {
         }
         App.setRoot("productos");
     }
+
+    /**
+     * Método que sirve para cambiar de color según si estan ocupadas las mesas o no verde si estan libres, rojas si
+     * estan ocupadas
+     */
     public void changeColor(){
         for (Mesa m : mesas) {
             String buttonId = Integer.toString(m.getId());
@@ -57,6 +70,10 @@ public class MesasController {
 
         }
     }
+
+    /**
+     * Crea un JAsper map con cada mesa con comandas del último mes con todos sus productos
+     */
     public void createHistorico(){
         HashMap<String, HashMap<Integer,Double>> paramHist = App.br.obtenerHashMapMesasComandas();
 
@@ -75,21 +92,45 @@ public class MesasController {
             }
         }
     }
+
+    /**
+     * Crea el jasper Report con los parametros que necesito
+     * @param mc_id id de la mesa con comandas
+     * @param nombre_Mesa nombre de la mesa que se va usar con la fecha inicial
+     * @param total_mc precio total de la mesa con comandas
+     */
     public void crearJasper(int mc_id, String nombre_Mesa, double total_mc){
         Map<String, Object> parametros = new HashMap<>();
         parametros.put("mc_id",mc_id);
-        parametros.put("nombre_Mesa", nombre_Mesa + " con la comanda " + mc_id);
+        parametros.put("nombre_Mesa", nombre_Mesa);
         parametros.put("total_mc", total_mc + " €");
 
         InputStream reportFile = getClass().getResourceAsStream("Historico.jrxml");
         try {
             JasperReport jasperReport = JasperCompileManager.compileReport(reportFile);
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, App.br.crearConexionJasper());
+
+            //            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+//            String fechaActual = dateFormat.format(new Date());
+//            String nombreArchivoPDF = nombre_Mesa + "_comanda_" + mc_id + "_" + fechaActual + ".pdf";
+//            String rutaPDF = "src/main/resources/historial/" + nombreArchivoPDF;
+//
+//             //Export to PDF
+//            JasperExportManager.exportReportToPdfFile(jasperPrint, rutaPDF);
             JasperViewer.viewReport(jasperPrint, false);
 
         } catch (JRException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Botón de estadisticas para ir a la vista de estadisticas
+     * @throws IOException
+     */
+    @FXML
+    private void botonEstadisticas() throws IOException {
+        App.setRoot("estadisticas");
     }
 
 

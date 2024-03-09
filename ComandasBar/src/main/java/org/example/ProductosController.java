@@ -19,6 +19,9 @@ import javafx.scene.image.ImageView;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 
+/**
+ * Clase la cual es el controlador de la vista de los productos
+ */
 
 public class ProductosController {
 
@@ -58,6 +61,10 @@ public class ProductosController {
         listener();
 
     }
+
+    /**
+     * Método que crea las columnas de la talbe view
+     */
     public void columns(){
         TableColumn<Producto, String> colNombre = new TableColumn<>("Nombre");
         TableColumn<Producto, Double> colPrecio = new TableColumn<>("Precio");
@@ -70,7 +77,9 @@ public class ProductosController {
     }
 
 
-
+    /**
+     * Metodo que activa los lisener de los botones
+     */
     private void listener() {
         imageViewAgua.setOnMouseClicked(event -> listenerProducts(1));
         imageViewFanta.setOnMouseClicked(event -> listenerProducts(2));
@@ -82,12 +91,21 @@ public class ProductosController {
         tartaQueso.setOnMouseClicked(mouseEvent -> listenerProducts(8));
         cafe.setOnMouseClicked(mouseEvent -> listenerProducts(7));
     }
+
+    /**
+     * Método para añadir un producto en concreto a la mesa con comanda
+     * @param i id del producto que se desea
+     */
     public void listenerProducts (int i){
         Producto producto = App.br.recibirProducto(i);
         addList(producto);
         App.br.insertarComanda(mesa_comanda_id,producto.getId(),producto.precioTotal());
     }
 
+    /**
+     * Método que añadir un producto a la lista
+     * @param producto producto para añadir
+     */
     private void addList(Producto producto) {
         boolean encontrado = false;
         for (Producto p : lista) {
@@ -103,11 +121,20 @@ public class ProductosController {
         reiniciarLista();
 
     }
+
+    /**
+     * Método que reinicia las listas
+     */
     private void reiniciarLista(){
         listaProductos.clear();
         listaProductos.addAll(lista);
         tableView.setItems(listaProductos);
     }
+
+    /**
+     * Método para el botón de pagar el cual servira para finalizar una mesa con comandas y volvera a la vista de mesas
+     * @throws IOException
+     */
 
     @FXML
     private void pagar() throws IOException{
@@ -122,6 +149,10 @@ public class ProductosController {
         reiniciarLista();
         App.setRoot("mesas");
     }
+
+    /**
+     * Método que crea un jasper de la mesa comanda en la que esta simulando un ticket
+     */
     @FXML
     private void crearJasper(){
         double precioTotal = 0 ;
@@ -143,6 +174,11 @@ public class ProductosController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Método que sirve para cancelar la mesa por si los clientes no piden nada
+     * @throws IOException
+     */
     @FXML
     private void cancelar() throws IOException {
         App.br.borrarMesaComandaMesa(App.mesaAct.getId());
@@ -151,6 +187,12 @@ public class ProductosController {
         reiniciarLista();
         App.setRoot("mesas");
     }
+
+    /**
+     * Método que sirve para ir a la vista de las mesas pero guardando todos los datos por si queremos volver a la
+     * mesa que esten todos los productos anteriores pedidos
+     * @throws IOException
+     */
 
     @FXML
     private void switchToPrimary() throws IOException {

@@ -1,11 +1,20 @@
 package org.example;
 
+/**
+ * Clase de producto
+ */
 public class Producto {
     private  int id ;
     private String nombre ;
     private double precio;
     private int cant ;
 
+    /**
+     * Constuctor de la clase producto
+     * @param id id del producto
+     * @param nombre nombre del producto
+     * @param precio precio del producto
+     */
     public Producto(int id ,String nombre, double precio) {
         this.id = id;
         this.nombre = nombre;
