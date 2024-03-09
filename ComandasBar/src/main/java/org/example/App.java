@@ -115,6 +115,9 @@ public class App extends Application {
         br.insertarProducto(8,"Tarta de Queso", 3.5);
         br.insertarProducto(9,"Tarta de Chocolate", 3.5);
 
-    }
+        br.insertarProducto(10, "Jarra de cerveza" , 3.0);
+        br.insertarProducto(11, "Sandwich Vegetal" , 6.2);
+        br.insertarProducto(12, "Naranja" , 3.0);
 
+    }
 }

@@ -46,6 +46,12 @@ public class ProductosController {
     private ImageView cafe;
     @FXML
     private ImageView tartaQueso;
+    @FXML
+    private ImageView cerveza;
+    @FXML
+    private ImageView sandwich;
+    @FXML
+    private ImageView naranja;
     private int mesa_comanda_id;
     private int mesa_id;
 
@@ -117,6 +123,9 @@ public class ProductosController {
         tartaChocolate.setOnMouseClicked(mouseEvent -> agregarProducto(9));
         tartaQueso.setOnMouseClicked(mouseEvent -> agregarProducto(8));
         cafe.setOnMouseClicked(mouseEvent -> agregarProducto(7));
+        cerveza.setOnMouseClicked(mouseEvent -> agregarProducto(10));
+        sandwich.setOnMouseClicked(mouseEvent -> agregarProducto(11));
+        naranja.setOnMouseClicked(mouseEvent -> agregarProducto(12));
     }
 
     /**

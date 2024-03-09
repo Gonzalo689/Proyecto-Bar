@@ -40,12 +40,12 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints maxHeight="221.0" minHeight="10.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="234.0" minHeight="10.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="221.0" minHeight="10.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="121.0" minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
                   <ImageView fx:id="imageViewFanta" fitHeight="150.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
@@ -91,6 +91,21 @@
                   <ImageView fx:id="tartaQueso" fitHeight="150.0" fitWidth="134.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <image>
                         <Image url="@../../img/TARTA_QUESO.bmp" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="cerveza" fitHeight="150.0" fitWidth="134.0" layoutX="244.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                     <image>
+                        <Image url="@../../img/JARRA_CERVEZA.bmp" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="sandwich" fitHeight="150.0" fitWidth="134.0" layoutX="360.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../img/SANDWICH_VEGETAL.bmp" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="naranja" fitHeight="150.0" fitWidth="134.0" layoutX="360.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <image>
+                        <Image url="@../../img/NARANJAS.bmp" />
                      </image>
                   </ImageView>
                </children>
