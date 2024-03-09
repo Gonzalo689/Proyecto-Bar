@@ -419,6 +419,52 @@ public class BarRepository {
             e.printStackTrace();
         }
     }
+    /**
+     * Método para eliminar una comanda específica. Si la cantidad del producto es menor o igual a cero,
+     * se elimina el producto de la comanda, de lo contrario se reduce en uno la cantidad.
+     * @param mesaComandaId El ID de la mesa con la comanda.
+     * @param productoId El ID del producto de la comanda a eliminar o reducir su cantidad.
+     */
+    public void eliminarComanda(int mesaComandaId, int productoId) {
+        try {
+            c.setAutoCommit(false);
+
+            s = c.prepareStatement("SELECT cant FROM comandas WHERE mesa_comanda_id = ? AND producto_id = ?");
+            s.setInt(1, mesaComandaId);
+            s.setInt(2, productoId);
+            ResultSet resultSet = s.executeQuery();
+
+            int cantidad = 0;
+            if (resultSet.next()) {
+                cantidad = resultSet.getInt("cant");
+            }
+            // Pongo menor o igual a 1 porque todavia no se a restado entonces que sedaria en 0
+            if (cantidad <= 1) {
+                String sqlDelete = "DELETE FROM comandas WHERE mesa_comanda_id = ? AND producto_id = ?";
+                s = c.prepareStatement(sqlDelete);
+                s.setInt(1, mesaComandaId);
+                s.setInt(2, productoId);
+                s.executeUpdate();
+                System.out.println("eliminado ");
+            } else {
+                String sqlUpdate = "UPDATE comandas SET cant = cant - 1 WHERE mesa_comanda_id = ? AND producto_id = ?";
+                s = c.prepareStatement(sqlUpdate);
+                s.setInt(1, mesaComandaId);
+                s.setInt(2, productoId);
+                s.executeUpdate();
+            }
+
+            c.commit();
+        } catch (SQLException e) {
+            try {
+                c.rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Función que devuelve datos para el JasperHistorico
@@ -460,9 +506,10 @@ public class BarRepository {
         HashMap<String, Integer> hashMapProductosCant = new HashMap<>();
         try {
             Statement statement = c.createStatement();
-            ResultSet resultSet = statement.executeQuery("select p.nombre, count(p.id) FROM productos p " +
+            ResultSet resultSet = statement.executeQuery("SELECT p.nombre, SUM(c.cant) AS total_vendido " +
+                    "FROM productos p " +
                     "INNER JOIN comandas c ON c.producto_id = p.id " +
-                    "group by p.nombre; ");
+                    "GROUP BY p.nombre;");
 
             while (resultSet.next()) {
                 String nombreProducto = resultSet.getString(1);

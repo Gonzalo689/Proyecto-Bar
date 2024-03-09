@@ -11,11 +11,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -69,11 +68,39 @@ public class ProductosController {
         TableColumn<Producto, String> colNombre = new TableColumn<>("Nombre");
         TableColumn<Producto, Double> colPrecio = new TableColumn<>("Precio");
         TableColumn<Producto, Integer> colStock = new TableColumn<>("Cant");
+        TableColumn<Producto, Void> colBotones = new TableColumn<>("Acciones");
 
-        tableView.getColumns().addAll(colNombre, colPrecio, colStock);
+        tableView.getColumns().addAll(colNombre, colPrecio, colStock, colBotones);
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
         colStock.setCellValueFactory(new PropertyValueFactory<>("cant"));
+        colBotones.setCellFactory(param -> new TableCell<>() {
+            private final Button agregar = new Button(" + ");
+            private final Button eliminar = new Button(" - ");
+
+            {
+                agregar.setOnAction(event -> {
+                    Producto producto = getTableView().getItems().get(getIndex());
+                    agregarProducto(producto.getId());
+                });
+
+                eliminar.setOnAction(event -> {
+                    Producto producto = getTableView().getItems().get(getIndex());
+                    eliminarProducto(producto);
+                });
+            }
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    HBox buttonsBox = new HBox(5,agregar, eliminar);
+
+                    setGraphic(buttonsBox);
+                }
+            }
+        });
     }
 
 
@@ -81,25 +108,34 @@ public class ProductosController {
      * Metodo que activa los lisener de los botones
      */
     private void listener() {
-        imageViewAgua.setOnMouseClicked(event -> listenerProducts(1));
-        imageViewFanta.setOnMouseClicked(event -> listenerProducts(2));
-        imageViewCola.setOnMouseClicked(event -> listenerProducts(3));
-        bocataLomo.setOnMouseClicked(event -> listenerProducts(4));
-        bocarajamon.setOnMouseClicked(event -> listenerProducts(5));
-        bocataTorilla.setOnMouseClicked(event -> listenerProducts(6));
-        tartaChocolate.setOnMouseClicked(mouseEvent -> listenerProducts(9));
-        tartaQueso.setOnMouseClicked(mouseEvent -> listenerProducts(8));
-        cafe.setOnMouseClicked(mouseEvent -> listenerProducts(7));
+        imageViewAgua.setOnMouseClicked(event -> agregarProducto(1));
+        imageViewFanta.setOnMouseClicked(event -> agregarProducto(2));
+        imageViewCola.setOnMouseClicked(event -> agregarProducto(3));
+        bocataLomo.setOnMouseClicked(event -> agregarProducto(4));
+        bocarajamon.setOnMouseClicked(event -> agregarProducto(5));
+        bocataTorilla.setOnMouseClicked(event -> agregarProducto(6));
+        tartaChocolate.setOnMouseClicked(mouseEvent -> agregarProducto(9));
+        tartaQueso.setOnMouseClicked(mouseEvent -> agregarProducto(8));
+        cafe.setOnMouseClicked(mouseEvent -> agregarProducto(7));
     }
 
     /**
      * Método para añadir un producto en concreto a la mesa con comanda
      * @param i id del producto que se desea
      */
-    public void listenerProducts (int i){
+    public void agregarProducto (int i){
         Producto producto = App.br.recibirProducto(i);
         addList(producto);
         App.br.insertarComanda(mesa_comanda_id,producto.getId(),producto.precioTotal());
+    }
+
+    /**
+     * Metodo para añadir un producto en concreto de la mesa con comanda
+     * @param p
+     */
+    public void eliminarProducto(Producto p){
+        removeList(p);
+        App.br.eliminarComanda(mesa_comanda_id, p.getId());
     }
 
     /**
@@ -118,6 +154,22 @@ public class ProductosController {
         if (!encontrado)
             lista.add(producto);
 
+        reiniciarLista();
+
+    }
+    /**
+     * Método que eliminar un producto a la lista
+     * @param producto producto para añadir
+     */
+    private void removeList(Producto producto) {
+        for (Producto p : lista) {
+            if (p.getId() == producto.getId()) {
+                p.removeCant();
+                if (p.getCant() <=0)
+                    lista.remove(p);
+                break;
+            }
+        }
         reiniciarLista();
 
     }

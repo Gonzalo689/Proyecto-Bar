@@ -57,6 +57,9 @@ public class Producto {
     public void addCant(){
         cant++;
     }
+    public void removeCant(){
+        cant--;
+    }
     public double precioTotal(){
         return cant*precio;
     }

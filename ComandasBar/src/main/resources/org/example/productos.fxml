@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -9,17 +10,19 @@
    <right>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableView">
+            <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
               <columns>
-
               </columns>
             </TableView>
-            <HBox prefHeight="0.0" prefWidth="248.0">
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="248.0" spacing="15.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#pagar" text="Pagar" />
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#crearJasper" text="Crear Informe" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#crearJasper" text="Crear Factura" />
                   <Button layoutX="57.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
                </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>
