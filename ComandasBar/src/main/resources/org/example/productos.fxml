@@ -8,29 +8,52 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ProductosController">
    <right>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
               <columns>
               </columns>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </TableView>
-            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="248.0" spacing="15.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#pagar" text="Pagar" />
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#crearJasper" text="Crear Factura" />
-                  <Button layoutX="57.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
-               </children>
+            <Label fx:id="labelPrecio" text="Precio Total : 0.00">
+               <font>
+                  <Font size="24.0" />
+               </font>
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="248.0" spacing="15.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#pagar" text="Pagar">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#crearJasper" text="Crear Factura">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+                  <Button layoutX="57.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" top="20.0" />
+               </VBox.margin>
             </HBox>
          </children>
+         <BorderPane.margin>
+            <Insets right="10.0" />
+         </BorderPane.margin>
       </VBox>
    </right>
    <center>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Projecto Bar">
+            <Label fx:id="labelMesa" text="Projecto Bar">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -110,7 +133,10 @@
                   </ImageView>
                </children>
             </GridPane>
-              <Button onAction="#switchToPrimary" text="Volver a las mesas" />
+              <Button onAction="#switchToPrimary" text="Volver a las mesas">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
          </children>
       </VBox>
    </center>

@@ -52,6 +52,11 @@ public class ProductosController {
     private ImageView sandwich;
     @FXML
     private ImageView naranja;
+
+    @FXML
+    private Label labelMesa;
+    @FXML
+    private Label labelPrecio;
     private int mesa_comanda_id;
     private int mesa_id;
 
@@ -61,10 +66,19 @@ public class ProductosController {
         lista = App.productos;
         mesa_id= App.mesaAct.getId();
         mesa_comanda_id = App.br.id_mesa_comanda(mesa_id);
+        labelMesa.setText(App.mesaAct.getNombre());
         columns();
         reiniciarLista();
         listener();
 
+    }
+
+    public void cambiarPrecio(){
+        Double precioTotal = 0.00;
+        for (Producto producto: listaProductos) {
+            precioTotal += producto.precioTotal();
+        }
+        labelPrecio.setText("Precio Total: " + precioTotal );
     }
 
     /**
@@ -190,6 +204,7 @@ public class ProductosController {
         listaProductos.clear();
         listaProductos.addAll(lista);
         tableView.setItems(listaProductos);
+        cambiarPrecio();
     }
 
     /**
