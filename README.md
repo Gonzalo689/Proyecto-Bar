@@ -37,7 +37,7 @@ Las contribuciones son bienvenidas y apreciadas. Si deseas contribuir a este pro
 
 ## Contacto
 
-Para cualquier consulta o sugerencia, no dudes en ponerte en contacto con el equipo de desarrollo a través de [correo electrónico](gonzacd9@gmail.com).
+Para cualquier consulta o sugerencia, no dudes en ponerte en contacto con el equipo de desarrollo a través de [gonzacd9@gmail.com](gonzacd9@gmail.com).
 
 ¡Gracias por tu interés en nuestro proyecto! Esperamos que disfrutes simulando la gestión de un bar con nuestra aplicación.
 
