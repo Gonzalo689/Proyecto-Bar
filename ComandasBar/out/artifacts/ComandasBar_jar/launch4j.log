@@ -1,0 +1,18 @@
+
+
+Version:	3.50
+CmdLine:	D:\Informatica2\Desarrollo interfaces\ProyectoBar\Proyecto-Bar\ComandasBar\out\artifacts\ComandasBar_jar\Bar.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	D:\Informatica2\Desarrollo interfaces\ProyectoBar\Proyecto-Bar\ComandasBar\out\artifacts\ComandasBar_jar\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+JRE paths:	C:\Program Files\Java\jre1.8.0_311\bin
+Check launcher:	C:\Program Files\Java\jre1.8.0_311\bin\javaw.exe (OK)
+Version string: 1.008.000_311 / 64-Bit (OK)
+Launcher:	C:\Program Files\Java\jre1.8.0_311\bin\javaw.exe
+Launcher args:	-jar "D:\Informatica2\Desarrollo interfaces\ProyectoBar\Proyecto-Bar\ComandasBar\out\artifacts\ComandasBar_jar\Bar.exe"
+Args length:	119/32768 chars
+Exit code:	0
