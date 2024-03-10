@@ -16,7 +16,7 @@ Este proyecto es una aplicación de JavaFX que simula las operaciones básicas d
 ## Instalación
 
 1. Clona este repositorio a tu máquina local utilizando el siguiente comando:
-2. git clone https://github.com/tu_usuario/simulador-bar.git
+2. git clone [https://github.com/tu_usuario/simulador-bar.git](https://github.com/Gonzalo689/Proyecto-Bar)
 3. Abre el proyecto en tu IDE preferido que admita JavaFX.
 3. Configura las dependencias necesarias para ejecutar la aplicación. Asegúrate de tener JavaFX instalado y configurado correctamente en tu entorno de desarrollo.
 4. Ejecuta la aplicación desde tu IDE y disfruta de la simulación de gestión de un bar.
