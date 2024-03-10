@@ -1,4 +1,8 @@
-Versión 0.9.1 (2025-09-09)
+Update pom.xml (2025-09-03)
+Mejoras
+ + Creación de JavaDoc
+
+Versión 0.9.1 (2025-09-03)
 Funcionamiento
  + Nuevo agregación de botones en la tableView para agregar y eliminar productos
 Mejora
